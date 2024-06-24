@@ -1,4 +1,4 @@
-// Copyright 2018 The Bazel Authors. All rights reserved.
+// Copyright 2022 The Bazel Authors. All rights reserved.
 //
 // Licensed under the Apache License, Version 2.0 (the "License");
 // you may not use this file except in compliance with the License.
@@ -12,14 +12,11 @@
 // See the License for the specific language governing permissions and
 // limitations under the License.
 
-export * from "./bazel_command";
-export * from "./bazel_coverage";
-export * from "./bazel_exit_code";
-export * from "./bazel_info";
-export * from "./bazel_query";
-export * from "./bazel_quickpick";
-export * from "./bazel_test";
-export * from "./bazel_utils";
-export * from "./bazel_workspace_info";
-export * from "./query_location";
-export * from "./tasks";
+import { BazelTest } from "./bazel_test";
+
+/** Provides a promise-based API around the `bazel coverage` command. */
+export class BazelCoverage extends BazelTest {
+  protected bazelCommand(): string {
+    return "coverage";
+  }
+}
